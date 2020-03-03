@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js"> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+        <h1>Template literals</h1>
+        <h3>& appending to the page</h3>
+        <t id="appendID">asdf</t>
+        <t id="appendMusic">asdf</t>
+        <div id="beerAppend"></div>
+
+        <script>
+
+
+//EXAMPLE 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            const dogs = [
+                { name: "ruffus", age: 1},
+                { name: "steve", age: 5},
+                { name: "martin", age: 6}
+            ];
+            
+            const markup = `
+            <ul>
+            ${dogs.map(x => `<li> ${x.name} is ${x.age} years old</li>`).join('')}
+            </ul>`;
+
+            document.getElementById("appendID").innerHTML = markup;
+//EXAMPLE 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//EXAMPLE 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+const song = {
+    name: "staying alive",
+    artist: 'the Beejees?',
+    feat: "groovy tunes"
+};
+
+
+const append = `
+    <div>
+        <p>
+            "the artist ${song.artist} is playing ${song.name}"
+            ${song.feat ? `featuring ${song.feat}`:""}
+    </div>
+`;
+
+document.getElementById("appendMusic").innerHTML = append;
+
+//EXAMPLE 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//EXAMPLE 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+const beer = {
+    name: 'Stones Throw',
+    brewery: 'Railroadery',
+    keywords: ['pale', 'amber', 'stout']
+};
+
+
+        
+        const beerAppend = `
+        <div>
+            <h2>${beer.name}</h2>
+            <p>${beer.brewery}</p>
+            ${beer.keywords.map(keyword => `<li>${keyword}</li>`).join('')}
+
+</div>
+`;
+
+console.log(beerAppend);
+
+document.getElementById("beerAppend").innerHTML = beerAppend;
+//EXAMPLE 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        </script>
+    </body>
+</html>
