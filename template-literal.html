@@ -15,7 +15,14 @@
         <t id="appendID">asdf</t>
         <t id="appendMusic">asdf</t>
         <div id="beerAppend"></div>
+        <br>
+        <div id="example4"></div>
+        <br>
+        <div class="example5"></div>
+        <div class="example6"></div>
 
+        <!-- For eample 6 -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.0.8/purify.min.js'></script>
         <script>
 
 
@@ -64,7 +71,6 @@ const beer = {
 };
 
 
-        
         const beerAppend = `
         <div>
             <h2>${beer.name}</h2>
@@ -78,6 +84,133 @@ console.log(beerAppend);
 
 document.getElementById("beerAppend").innerHTML = beerAppend;
 //EXAMPLE 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// EXAMPLE 4 TAG TEMPLATES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function highlight(strings, ...values){
+    let str = '';
+    let secondStr = '';
+
+    strings.forEach((string,i) => {
+        str += string + (values[i] || "")
+        // document.getElementById("example4").innerHTML = str; 
+    });
+
+    strings.map((firstVar,i)=> {
+        secondStr += `<h3 contenteditable> ${firstVar} ${(values[i] || "")}</h3>`;
+        // console.log(secondStr);
+        document.getElementById("example4").innerHTML = secondStr; 
+    })
+    return str;
+}
+
+const myDog = {
+    name: "Snickers",
+    age: 100,
+}
+
+const sentance = highlight`My dog's name is ${myDog.name} and is ${myDog.age} years old`;
+
+console.log(sentance);
+
+
+// EXAMPLE 4 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// EXAMPLE 5 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// VIDEO 14, NEEDS WORK
+// const dict = {
+//     HTML: "Hyper text markup language",
+//     CSS: "Cascading Style Sheets",
+//     JS: "Javascript"
+// };
+
+// // function getAbrv(strings, ...values){
+// //     const abbreviated = values.map(value => {
+// //         if(dict[value]){
+// //             return `<abbr title="${dict[value]}">${value}</abbr>`;
+// //         }
+
+// //     });
+// //     return strings.reduce((newSentence, string, i) =>{
+// //         return `${newSentence}${string}${abbreviated[i] || ''}`;
+// //     }, '');
+// // };
+// // getAbrv();
+// const firstName = "Jay";
+// const lastName = "Cobb";
+// const newSentence = getAbrv`hello my name is ${firstName} ${lastName} and I love to code in ${'HTML'} ${'CSS'} and ${'JS'}`;
+
+// function getAbrv(strings, ...values){
+//     let thridStr = '';
+//     // const sentence5 = newSentence;
+
+//     const abbreviated = values.map(value => {
+//         if(dict[value]){
+//             return `<abbr title="${dict[value]}">${value}</abbr>`;
+//             return value;
+//         }
+//         console.log(strings);
+//         return strings.reduce((sentence5, string, i) => {
+//             return `${sentence5} ${string} ${abbreviated[i] || ''}`;
+//         }, '');
+//         return value;
+//     })
+
+//     // console.log(abbreviated);
+//     // strings.map((firstVar,i)=> {
+//     //     thridStr += `<h3 contenteditable> ${firstVar} ${(values[i] || "")}</h3>`;
+//     //     console.log(thridStr);
+//     //     document.getElementById("example4").innerHTML = thridStr; 
+ 
+// };
+// getAbrv();
+
+// // const firstName = "Jay";
+// // const lastName = "Cobb";
+// // const newSentence = getAbrv`hello my name is ${firstName} ${lastName} and I love to code in ${'HTML'} ${'CSS'} and ${'JS'}`;
+
+
+// const getSelect = document.querySelector(".example5");
+// const newText = document.createElement('p');
+// newText.innerHTML = newSentence;
+// getSelect.appendChild(newText);
+
+
+
+
+
+// console.log(newSentence);
+
+// EXAMPLE 5 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+// EXAMPLE 6 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// SANATIZATION/ JAVASCRIPT INJECTION
+
+function sanitize(strings,...values){
+    const codeInjection = strings.reduce((prev, next, i) => `${prev}${next}${values[i] || ''}`,'');
+    return DOMPurify.sanitize(codeInjection);
+}
+
+const first = "jay";
+const aboutMe = sanitize`I love to do evil <img src="https://via.placeholder.com/150" onload="alert('wasd');"/>`;
+
+const newHtml = `
+<h3>${first}</h3>
+<p>${aboutMe}</p>
+`;
+
+const newInsert = document.querySelector(".example6");
+newInsert.innerHTML = newHtml;
+
+
+// EXAMPLE 6 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
 
         </script>
     </body>
