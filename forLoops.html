@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js"> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+        <!-- To generate multiple lines with index -->
+        <!-- p{stuff $}*10 -->
+        <p>stuff 1</p>
+        <p>stuff 2</p>
+        <p>stuff 3</p>
+        <p>stuff 4</p>
+        <p>stuff 5</p>
+        <p>stuff 6</p>
+        <p>stuff 7</p>
+        <p>stuff 8</p>
+        <p>stuff 9</p>
+        <p>stuff 10</p>
+        
+        <script>
+            const cuts = ["Chuck", 'Brisket', 'Shank', 'Short Rib'];
+            console.log(cuts.entries());
+
+            
+            // for (const entries of cuts.entries()){
+            //     console.log(entries);
+            // }
+
+
+            // Deconstructed version
+            for (const [i, entries] of cuts.entries()){
+                console.log([1,2,3]);
+                console.log(`${entries} is the ${i + 1} item`);
+            }
+
+
+
+            function addNumbers(){
+                let total = 0;
+                for (x of arguments){
+                    total += x;
+                }
+                console.log(total);
+            }
+
+            addNumbers(10,11,34,52,63);
+
+
+
+            const name = "Jay Cobb";
+            for (char of name){
+                console.log(char);
+            }
+
+            const pTags = document.querySelectorAll('p');
+            for (const lines of pTags){
+                lines.addEventListener('click', function(){
+                    console.log(this.textContent);
+                })
+            }
+
+
+
+
+        </script>
+    </body>
+</html>
