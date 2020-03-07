@@ -38,12 +38,26 @@
             // Sets last index of string to ("", val)
             console.log(flightNumber.endsWith("18",9))
 
+
+
+
             // .includes()
+            // Case sensitive
+            console.log(make.includes("x"));
+
+
+
+
             // .repeat()
+            console.log(model.repeat(5));
 
+            function leftPad(string, length = 20){
+                return `${' '.repeat(length - string.length)}${string}`
+            }
 
-
-
+            console.log(leftPad(make));
+            console.log(leftPad(model));
+            console.log(leftPad(color));
 
         </script>
     </body>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+        
+        <script>
+            function convertCurrency(amount){
+                const converted = {
+                    USD: amount * 76,
+                    GPB: amount * 53,
+                    AUD: amount * 1.01,
+                    MEX: amount * 13.30
+                };
+                return converted;
+            }
+
+            // These vars do not need to be in the same order
+            // You can also take only the vars you need
+            const {USD, GPB, MEX, AUD} = convertCurrency(100);
+
+
+
+
+
+            // If there in no call/object passed in an error will be thrown
+            // eg no console.log(tipCalc({ total: 1234}))
+            function tipCalc({total, tip = 0.15, tax = 0.13}){
+                return total + (tip * total) + (tax * total);
+            }
+
+            // These can also be in any order
+            const bill = tipCalc({ total: 200, tip: 0.20, tax: 0.13 });
+
+        </script>
+    </body>
+</html>
